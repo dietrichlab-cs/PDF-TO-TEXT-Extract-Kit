@@ -129,15 +129,19 @@ class LayoutDetectionYOLO:
 
     def predict(self, images, result_path, image_ids=None):
         """
-        Predict formulas in images.
+        Predict formulas in images, visualize detections, and save results.
 
         Args:
-            images (list): List of images to be predicted.
-            result_path (str): Path to save the prediction results.
-            image_ids (list, optional): List of image IDs corresponding to the images.
+            images (list of str): Paths to the input images.
+            result_path (str): Directory where prediction results and visualizations are saved.
+            image_ids (list of str, optional): IDs corresponding to the images.
 
         Returns:
-            list: List of prediction results.
+            list: Prediction results for each image.
+
+        Output:
+            - Cropped images of detected formulas are saved in 'result_path/img/'.
+            - Visualized images with bounding boxes are saved directly in 'result_path/'.
         """
         results = []
         for idx, image_path in enumerate(images):
